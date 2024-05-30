@@ -35,6 +35,17 @@ and this notice must be preserved on all copies.  */
 #include "expr.h"
 
 #include "obstack.h"
+////////
+//why cant it find it?!
+#define ASM_OUTPUT_COMMON(FILE, NAME, SIZE)  \
+( fputs (".comm ", (FILE)),			\
+  assemble_name ((FILE), (NAME)),		\
+  fprintf ((FILE), ",%d\n", (SIZE)))
+#define ASM_OUTPUT_LOCAL(FILE, NAME, SIZE)  \
+( fputs (".lcomm ", (FILE)),			\
+  assemble_name ((FILE), (NAME)),		\
+  fprintf ((FILE), ",%d\n", (SIZE)))
+/////
 
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 

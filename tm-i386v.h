@@ -40,7 +40,7 @@ and this notice must be preserved on all copies.  */
 
 /* We want to output SDB debugging information.  */
 
-#define SDB_DEBUGGING_INFO
+//#define SDB_DEBUGGING_INFO
 
 /* We don't want to output DBX debugging information.  */
 

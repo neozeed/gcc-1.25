@@ -26,11 +26,18 @@ and this notice must be preserved on all copies.  */
 #include "gdbfiles.h"
 #include <stdio.h>
 #undef NULL
-#include "stddef.h"
+#include "_stddef.h"
+/////////////////////////////
+//why cant it find it?!
+#define ASM_OUTPUT_LOCAL(FILE, NAME, SIZE)  \
+( fputs (".lcomm ", (FILE)),			\
+  assemble_name ((FILE), (NAME)),		\
+  fprintf ((FILE), ",%d\n", (SIZE)))
+/////////////////////////////
 
 /* Get N_SO from stab.h if we can expect the file to exist.  */
 #ifdef DBX_DEBUGGING_INFO
-#include <stab.h>
+#include "stab.h"
 #endif
 
 /* .stabs code for source file name.  */

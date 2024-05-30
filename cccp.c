@@ -133,6 +133,7 @@ typedef unsigned char U_CHAR;
 #ifndef VMS
 #include <sys/file.h>
 #ifndef USG
+#include <stdlib.h>
 #include <sys/time.h>		/* for __DATE__ and __TIME__ */
 #include <sys/resource.h>
 #else
@@ -4956,6 +4957,7 @@ void
 perror_with_name (name)
      char *name;
 {
+#if 0
   extern int errno, sys_nerr;
   extern char *sys_errlist[];
 
@@ -4963,6 +4965,7 @@ perror_with_name (name)
   if (errno < sys_nerr)
     fprintf (stderr, "%s for `%s'\n", sys_errlist[errno], name);
   else
+#endif
     fprintf (stderr, "undocumented error for `%s'\n", name);
 }
 

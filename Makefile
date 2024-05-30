@@ -23,7 +23,7 @@ CFLAGS = -g
 CC = cc
 # OLDCC should not be the GNU C compiler.
 OLDCC = cc
-BISON = bison
+BISON = \xdjgpp.v1\bin\bison
 AR = ar
 SHELL = /bin/sh
 
@@ -62,8 +62,8 @@ OBSTACK1=obstack.o
 LIBS = $(OBSTACK) $(CLIB)
 DIR = ../gcc
 
-OBJS = toplev.o version.o parse.tab.o tree.o print-tree.o \
- decl.o typecheck.o stor-layout.o fold-const.o \
+OBJS = toplev.o version.o c-parse.tab.o tree.o print-tree.o \
+ c-decl.o c-typeck.o stor-layout.o fold-const.o \
  rtl.o expr.o stmt.o expmed.o explow.o optabs.o varasm.o \
  symout.o dbxout.o sdbout.o emit-rtl.o insn-emit.o \
  integrate.o jump.o cse.o loop.o flow.o stupid.o combine.o \
@@ -132,18 +132,18 @@ gnulib: gnulib.c
 #	mv gnulib gnulib-hp
 #	hpxt gnulib-hp gnulib
 
-decl.o : decl.c $(CONFIG_H) $(TREE_H) flags.h c-tree.h parse.h
-typecheck.o : typecheck.c $(CONFIG_H) $(TREE_H) c-tree.h flags.h
+c-decl.o : c-decl.c $(CONFIG_H) $(TREE_H) flags.h c-tree.h c-parse.h
+c-typeck.o : c-typeck.c $(CONFIG_H) $(TREE_H) c-tree.h flags.h
 tree.o : tree.c $(CONFIG_H) $(TREE_H)
 print-tree.o : print-tree.c $(CONFIG_H) $(TREE_H)
 stor-layout.o : stor-layout.c $(CONFIG_H) $(TREE_H)
 fold-const.o : fold-const.c $(CONFIG_H) $(TREE_H)
 toplev.o : toplev.c $(CONFIG_H) $(TREE_H) flags.h
 
-parse.tab.o : parse.tab.c $(CONFIG_H) $(TREE_H) parse.h c-tree.h flags.h
+c-parse.tab.o : c-parse.tab.c $(CONFIG_H) $(TREE_H) c-parse.h c-tree.h flags.h
 
-parse.tab.c : parse.y
-	$(BISON) -v parse.y
+parse.tab.c : c-parse.y
+	$(BISON) -v c-parse.y
 
 rtl.o : rtl.c $(CONFIG_H) $(RTL_H)
 
@@ -197,50 +197,50 @@ recog.o : recog.c $(CONFIG_H) $(RTL_H)  \
 
 insn-config.h : md genconfig
 	./genconfig md > tmp-insn-config.h
-	./move-if-change tmp-insn-config.h insn-config.h
+	sh ./move-if-change tmp-insn-config.h insn-config.h
 
 insn-flags.h : md genflags
 	./genflags md > tmp-insn-flags.h
-	./move-if-change tmp-insn-flags.h insn-flags.h
+	sh ./move-if-change tmp-insn-flags.h insn-flags.h
 
 insn-codes.h : md gencodes
 	./gencodes md > tmp-insn-codes.h
-	./move-if-change tmp-insn-codes.h insn-codes.h
+	sh ./move-if-change tmp-insn-codes.h insn-codes.h
 
 insn-emit.o : insn-emit.c $(CONFIG_H) $(RTL_H) expr.h insn-config.h
 	$(CC) $(CFLAGS) -c insn-emit.c
 
 insn-emit.c : md genemit
 	./genemit md > tmp-insn-emit.c
-	./move-if-change tmp-insn-emit.c insn-emit.c
+	sh ./move-if-change tmp-insn-emit.c insn-emit.c
 
 insn-recog.o : insn-recog.c $(CONFIG_H) $(RTL_H) insn-config.h
 	$(CC) $(CFLAGS) -c insn-recog.c
 
 insn-recog.c : md genrecog
 	./genrecog md > tmp-insn-recog.c
-	./move-if-change tmp-insn-recog.c insn-recog.c
+	sh ./move-if-change tmp-insn-recog.c insn-recog.c
 
 insn-extract.o : insn-extract.c $(RTL_H)
 	$(CC) $(CFLAGS) -c insn-extract.c
 
 insn-extract.c : md genextract
 	./genextract md > tmp-insn-extract.c
-	./move-if-change tmp-insn-extract.c insn-extract.c
+	sh ./move-if-change tmp-insn-extract.c insn-extract.c
 
 insn-peep.o : insn-peep.c $(CONFIG_H) $(RTL_H) regs.h
 	$(CC) $(CFLAGS) -c insn-peep.c
 
 insn-peep.c : md genpeep
 	./genpeep md > tmp-insn-peep.c
-	./move-if-change tmp-insn-peep.c insn-peep.c
+	sh ./move-if-change tmp-insn-peep.c insn-peep.c
 
 insn-output.o : insn-output.c $(CONFIG_H) $(RTL_H) regs.h insn-config.h insn-flags.h conditions.h output.h aux-output.c
 	$(CC) $(CFLAGS) -c insn-output.c
 
 insn-output.c : md genoutput
 	./genoutput md > tmp-insn-output.c
-	./move-if-change tmp-insn-output.c insn-output.c
+	sh ./move-if-change tmp-insn-output.c insn-output.c
 
 # Now the programs that generate those files.
 

@@ -418,7 +418,7 @@ execute ()
       win = (access (temp, X_OK) == 0);
     }
 
-  if (vflag)
+//  if (vflag)
     {
       int i;
       for (i = 0; argbuf[i]; i++)
@@ -440,7 +440,7 @@ execute ()
 	return 0;
 #endif				/* DEBUG */
     }
-
+#if 0
 #ifdef USG
   pid = fork ();
   if (pid < 0)
@@ -464,6 +464,7 @@ execute ()
     fatal ("Program %s got fatal signal %d.", argbuf[0], (status & 0x7F));
   if (((status & 0xFF00) >> 8) >= MIN_FATAL_STATUS)
     return -1;
+#endif
   return 0;
 }
 
@@ -1021,7 +1022,7 @@ fatal_error (signum)
   delete_temp_files (0);
   /* Get the same signal again, this time not handled,
      so its normal effect occurs.  */
-  kill (getpid (), signum);
+//  kill (getpid (), signum);
 }
 
 int
@@ -1038,8 +1039,8 @@ main (argc, argv)
 
   if (signal (SIGINT, SIG_IGN) != SIG_IGN)
     signal (SIGINT, fatal_error);
-  if (signal (SIGHUP, SIG_IGN) != SIG_IGN)
-    signal (SIGHUP, fatal_error);
+//  if (signal (SIGHUP, SIG_IGN) != SIG_IGN)
+//    signal (SIGHUP, fatal_error);
   if (signal (SIGTERM, SIG_IGN) != SIG_IGN)
     signal (SIGTERM, fatal_error);
 
@@ -1199,13 +1200,15 @@ save_string (s, len)
 pfatal_with_name (name)
      char *name;
 {
+  char *s;
+#if 0
   extern int errno, sys_nerr;
   extern char *sys_errlist[];
-  char *s;
 
   if (errno < sys_nerr)
     s = concat ("", sys_errlist[errno], " for %s");
   else
+#endif
     s = "cannot open %s";
   fatal (s, name);
 }
@@ -1213,13 +1216,15 @@ pfatal_with_name (name)
 perror_with_name (name)
      char *name;
 {
+  char *s;
+#if 0
   extern int errno, sys_nerr;
   extern char *sys_errlist[];
-  char *s;
 
   if (errno < sys_nerr)
     s = concat ("", sys_errlist[errno], " for %s");
   else
+#endif
     s = "cannot open %s";
   error (s, name);
 }

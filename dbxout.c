@@ -74,7 +74,7 @@ and this notice must be preserved on all copies.  */
 
 #ifdef DBX_DEBUGGING_INFO
 
-#include <stab.h>
+#include "stab.h"
 
 /* Stream for writing to assembler file.  */
 

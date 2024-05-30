@@ -292,6 +292,7 @@ int dump_time;
 int
 gettime ()
 {
+#if 0
 #ifdef USG
   struct tms tms;
 #else
@@ -323,6 +324,9 @@ gettime ()
   times (&vms_times);
   return (vms_times.proc_user_time + vms_times.proc_system_time) * 10000;
 #endif
+#endif
+#else
+return 0;
 #endif
 }
 

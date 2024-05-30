@@ -557,7 +557,7 @@
 	(sign_extend:SI
 	 (match_operand:QI 1 "general_operand" "qm")))]
   ""
-  "movs%B%L %1,%0"
+ "movs%B%L %1,%0"
  )
 
 ;; Conversions between float and double.

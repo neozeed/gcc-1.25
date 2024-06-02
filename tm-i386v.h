@@ -52,8 +52,8 @@ and this notice must be preserved on all copies.  */
 
 /* Don't write a `.optim' pseudo; this assembler doesn't handle them.  */
 
-#undef ASM_FILE_START1
-#define ASM_FILE_START_1(FILE)
+//#undef ASM_FILE_START1
+//#define ASM_FILE_START_1(FILE)
 
 /* Machines that use the AT&T assembler syntax
    also return floating point values in an FP register.  */

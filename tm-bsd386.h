@@ -145,7 +145,6 @@ and this notice must be preserved on all copies.  */
 /* This says how to output an assembler line
    to define a global common symbol.  */
 
-//#define ASM_OUTPUT_COMMON(FILE, NAME, SIZE, ROUNDED)  \
 #define ASM_OUTPUT_COMMON(FILE, NAME, SIZE)  \
 ( fputs (".comm ", (FILE)),			\
   assemble_name ((FILE), (NAME)),		\
@@ -154,7 +153,6 @@ and this notice must be preserved on all copies.  */
 /* This says how to output an assembler line
    to define a local common symbol.  */
 
-//#define ASM_OUTPUT_LOCAL(FILE, NAME, SIZE, ROUNDED)  \
 #define ASM_OUTPUT_LOCAL(FILE, NAME, SIZE)  \
 ( fputs (".lcomm ", (FILE)),			\
   assemble_name ((FILE), (NAME)),		\
@@ -200,5 +198,6 @@ and this notice must be preserved on all copies.  */
 
 /* This is how to output an assembler line defining a `double' constant.  */
 
+#undef  ASM_OUTPUT_DOUBLE
 #define ASM_OUTPUT_DOUBLE(FILE,VALUE)  \
   fprintf (FILE, "\t.double 0d%.20e\n", (VALUE))

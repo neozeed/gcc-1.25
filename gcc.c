@@ -115,7 +115,7 @@ position among the other output files.
 #include <stdio.h>
 #include <sys/types.h>
 #include <signal.h>
-#include <sys/file.h>
+//#include <sys/file.h>
 #include "obstack.h"
 #include "config.h"
 
@@ -421,13 +421,20 @@ execute ()
 //  if (vflag)
     {
       int i;
+      char command[255];
+      memset(command,0x0,sizeof(command));
       for (i = 0; argbuf[i]; i++)
 	{
 	  if (i == 0 && win)
 	    fprintf (stderr, " %s", temp);
 	  else
 	    fprintf (stderr, " %s", argbuf[i]);
+	  if(i>0)
+	    strcat(command," ");
+	  strcat(command,argbuf[i]);
 	}
+//      printf("\ncommand to run is [%s]\n",command);
+      system(command);
       fprintf (stderr, "\n");
       fflush (stderr);
 #ifdef DEBUG

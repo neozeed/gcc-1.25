@@ -32,8 +32,8 @@ and this notice must be preserved on all copies.  */
 #include <sys/stat.h>
 
 #ifdef USG
-#include <sys/param.h>
-#include <sys/times.h>
+//#include <sys/param.h>
+//#include <sys/times.h>
 #include <time.h>   /* Correct for hpux at least.  Is it good on other USG?  */
 #else
 #ifndef VMS

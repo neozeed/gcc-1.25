@@ -30,7 +30,7 @@ and this notice must be preserved on all copies.  */
 
 /* Specify predefined symbols in preprocessor.  */
 
-//#define CPP_PREDEFINES "-Dunix -Di386 -Dsequent"
+/*#define CPP_PREDEFINES "-Dunix -Di386 -Dsequent"	*/
 #define CPP_PREDEFINES "-Dunix -Di386 -DGNUDOS"
 
 /* We don't want to output SDB debugging information.  */

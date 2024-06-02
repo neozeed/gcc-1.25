@@ -18,7 +18,6 @@ can know your rights and responsibilities.  It should be in a
 file named COPYING.  Among other things, the copyright notice
 and this notice must be preserved on all copies.  */
 
-
 /*  To whomever it may concern: I have heard that such a thing was once
  written by AT&T, but I have never seen it.  */
 
@@ -55,12 +54,13 @@ State 411 contains 2 shift/reduce conflicts.  (like 166 for parm_declarator)?
 #include <stdio.h>
 #include <errno.h>
 
+
 #ifndef errno
 extern int errno;
 #endif
 
 /* Cause the `yydebug' variable to be defined.  */
-#define YYDEBUG
+#define YYDEBUG 1
 %}
 
 %start program
@@ -1284,7 +1284,7 @@ int check_newline ();
 void
 init_lex ()
 {
-  extern char *malloc ();
+//  extern char *malloc ();
 
   /* Start it at 0, because check_newline is called at the very beginning
      and will increment it to 1.  */
@@ -2219,7 +2219,7 @@ yylex ()
 	  {
 	    /* If this is a L"..." wide-string, convert each char
 	       to an int, making a vector of ints.  */
-	    int *widebuf = (int *) alloca (p - token_buffer);
+	    int *widebuf = (int *) malloc (p - token_buffer);
 	    char *p1 = token_buffer + 1;
 	    for (; p1 != p; p1++)
 	      widebuf[p1 - token_buffer - 1] = *p1;

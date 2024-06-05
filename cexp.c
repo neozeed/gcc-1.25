@@ -1,6 +1,8 @@
 
 /*  A Bison parser, made from cexp.y  */
 
+#define YYBISON 1  /* Identify Bison output.  */
+
 #define	INT	258
 #define	CHAR	259
 #define	NAME	260
@@ -54,9 +56,6 @@ typedef
 #define YYLTYPE yyltype
 #endif
 
-#define	YYACCEPT	return(0)
-#define	YYABORT	return(1)
-#define	YYERROR	return(1)
 #include <stdio.h>
 
 #ifndef __STDC__
@@ -101,18 +100,39 @@ static const char yytranslate[] = {     0,
      6,    10,    11,    15,    16,    19,    20,    21,    22,    28
 };
 
-static const short yyrline[] = {     0,
+static const short yyprhs[] = {     0,
+     0,     2,     4,     8,    11,    14,    17,    21,    25,    29,
+    33,    37,    41,    45,    49,    53,    57,    61,    65,    69,
+    73,    77,    81,    85,    89,    93,    99,   101,   103
+};
+
+static const short yyrhs[] = {    34,
+     0,    35,     0,    34,     9,    35,     0,    24,    35,     0,
+    29,    35,     0,    30,    35,     0,    31,    34,    32,     0,
+    35,    25,    35,     0,    35,    26,    35,     0,    35,    27,
+    35,     0,    35,    23,    35,     0,    35,    24,    35,     0,
+    35,    21,    35,     0,    35,    22,    35,     0,    35,    15,
+    35,     0,    35,    16,    35,     0,    35,    19,    35,     0,
+    35,    20,    35,     0,    35,    17,    35,     0,    35,    18,
+    35,     0,    35,    14,    35,     0,    35,    13,    35,     0,
+    35,    12,    35,     0,    35,    11,    35,     0,    35,    10,
+    35,     0,    35,     7,    35,     8,    35,     0,     3,     0,
+     4,     0,     5,     0
+};
+
+#if YYDEBUG != 0
+static const short yyrline[] = { 0,
    154,   159,   160,   165,   167,   169,   171,   176,   178,   180,
    182,   184,   186,   188,   190,   192,   194,   196,   198,   200,
    202,   204,   206,   208,   210,   212,   214,   216,   218
 };
 
-static const char * const yytname[] = {     0,
-"error","$illegal.","INT","CHAR","NAME","ERROR","'?'","':'","','","OR",
-"AND","'|'","'^'","'&'","EQUAL","NOTEQUAL","'<'","'>'","LEQ","GEQ",
-"LSH","RSH","'+'","'-'","'*'","'/'","'%'","UNARY","'!'","'~'",
-"'('","')'","start"
+static const char * const yytname[] = {   "$","error","$illegal.","INT","CHAR",
+"NAME","ERROR","'?'","':'","','","OR","AND","'|'","'^'","'&'","EQUAL","NOTEQUAL",
+"'<'","'>'","LEQ","GEQ","LSH","RSH","'+'","'-'","'*'","'/'","'%'","UNARY","'!'",
+"'~'","'('","')'","start","exp1","exp",""
 };
+#endif
 
 static const short yyr1[] = {     0,
     33,    34,    34,    35,    35,    35,    35,    35,    35,    35,
@@ -199,113 +219,45 @@ static const short yycheck[] = {     4,
     21,    22,    23,    24,    25,    26,    27,    23,    24,    25,
     26,    27
 };
-#define YYPURE 1
-
-#line 2 "bison.simple"
+/* -*-C-*-  Note some compilers choke on comments on `#line' lines.  */
+#line 3 "bison.simple"
 
 /* Skeleton output parser for bison,
-   copyright (C) 1984 Bob Corbett and Richard Stallman
+   Copyright (C) 1984, 1989, 1990 Bob Corbett and Richard Stallman
 
-		       NO WARRANTY
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 1, or (at your option)
+   any later version.
 
-  BECAUSE THIS PROGRAM IS LICENSED FREE OF CHARGE, WE PROVIDE ABSOLUTELY
-NO WARRANTY, TO THE EXTENT PERMITTED BY APPLICABLE STATE LAW.  EXCEPT
-WHEN OTHERWISE STATED IN WRITING, FREE SOFTWARE FOUNDATION, INC,
-RICHARD M. STALLMAN AND/OR OTHER PARTIES PROVIDE THIS PROGRAM "AS IS"
-WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING,
-BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY
-AND PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE PROGRAM PROVE
-DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR
-CORRECTION.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
 
- IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW WILL RICHARD M.
-STALLMAN, THE FREE SOFTWARE FOUNDATION, INC., AND/OR ANY OTHER PARTY
-WHO MAY MODIFY AND REDISTRIBUTE THIS PROGRAM AS PERMITTED BELOW, BE
-LIABLE TO YOU FOR DAMAGES, INCLUDING ANY LOST PROFITS, LOST MONIES, OR
-OTHER SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
-USE OR INABILITY TO USE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR
-DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY THIRD PARTIES OR
-A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS) THIS
-PROGRAM, EVEN IF YOU HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH
-DAMAGES, OR FOR ANY CLAIM BY ANY OTHER PARTY.
-
-		GENERAL PUBLIC LICENSE TO COPY
-
-  1. You may copy and distribute verbatim copies of this source file
-as you receive it, in any medium, provided that you conspicuously and
-appropriately publish on each copy a valid copyright notice "Copyright
-(C) 1985 Free Software Foundation, Inc."; and include following the
-copyright notice a verbatim copy of the above disclaimer of warranty
-and of this License.  You may charge a distribution fee for the
-physical act of transferring a copy.
-
-  2. You may modify your copy or copies of this source file or
-any portion of it, and copy and distribute such modifications under
-the terms of Paragraph 1 above, provided that you also do the following:
-
-    a) cause the modified files to carry prominent notices stating
-    that you changed the files and the date of any change; and
-
-    b) cause the whole of any work that you distribute or publish,
-    that in whole or in part contains or is a derivative of this
-    program or any part thereof, to be licensed at no charge to all
-    third parties on terms identical to those contained in this
-    License Agreement (except that you may choose to grant more extensive
-    warranty protection to some or all third parties, at your option).
-
-    c) You may charge a distribution fee for the physical act of
-    transferring a copy, and you may at your option offer warranty
-    protection in exchange for a fee.
-
-Mere aggregation of another unrelated program with this program (or its
-derivative) on a volume of a storage or distribution medium does not bring
-the other program under the scope of these terms.
-
-  3. You may copy and distribute this program (or a portion or derivative
-of it, under Paragraph 2) in object code or executable form under the terms
-of Paragraphs 1 and 2 above provided that you also do one of the following:
-
-    a) accompany it with the complete corresponding machine-readable
-    source code, which must be distributed under the terms of
-    Paragraphs 1 and 2 above; or,
-
-    b) accompany it with a written offer, valid for at least three
-    years, to give any third party free (except for a nominal
-    shipping charge) a complete machine-readable copy of the
-    corresponding source code, to be distributed under the terms of
-    Paragraphs 1 and 2 above; or,
-
-    c) accompany it with the information you received as to where the
-    corresponding source code may be obtained.  (This alternative is
-    allowed only for noncommercial distribution and only if you
-    received the program in object code or executable form alone.)
-
-For an executable file, complete source code means all the source code for
-all modules it contains; but, as a special exception, it need not include
-source code for modules which are standard libraries that accompany the
-operating system on which the executable file runs.
-
-  4. You may not copy, sublicense, distribute or transfer this program
-except as expressly provided under this License Agreement.  Any attempt
-otherwise to copy, sublicense, distribute or transfer this program is void and
-your rights to use the program under this License agreement shall be
-automatically terminated.  However, parties who have received computer
-software programs from you with this License Agreement will not have
-their licenses terminated so long as such parties remain in full compliance.
-
-  5. If you wish to incorporate parts of this program into other free
-programs whose distribution conditions are different, write to the Free
-Software Foundation at 675 Mass Ave, Cambridge, MA 02139.  We have not yet
-worked out a simple rule that can be stated here, but we will often permit
-this.  We will be guided by the two goals of preserving the free status of
-all derivatives of our free software and of promoting the sharing and reuse of
-software.
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.  */
 
 
-In other words, you are welcome to use, share and improve this program.
-You are forbidden to forbid anyone else to use, share and improve
-what you give them.   Help stamp out software-hoarding!  */
+#ifndef alloca
+#ifdef __GNUC__
+#define alloca __builtin_alloca
+#else /* not GNU C.  */
+#if (!defined (__STDC__) && defined (sparc)) || defined (__sparc__)
+#include <alloca.h>
+#else /* not sparc */
+#if defined (MSDOS) && !defined (__TURBOC__)
+#include <malloc.h>
+#else /* not MSDOS, or __TURBOC__ */
+#if defined(_AIX)
+#include <malloc.h>
+ #pragma alloca
+#endif /* not _AIX */
+#endif /* not MSDOS, or __TURBOC__ */
+#endif /* not sparc.  */
+#endif /* not GNU C.  */
+#endif /* alloca not defined.  */
 
 /* This is the parser code that is written into each bison parser
   when the %semantic_parser declaration is not specified in the grammar.
@@ -320,53 +272,121 @@ what you give them.   Help stamp out software-hoarding!  */
 #define yyclearin	(yychar = YYEMPTY)
 #define YYEMPTY		-2
 #define YYEOF		0
-#define YYFAIL		goto yyerrlab;
+#define YYACCEPT	return(0)
+#define YYABORT 	return(1)
+#define YYERROR		goto yyerrlab1
+/* Like YYERROR except do call yyerror.
+   This remains here temporarily to ease the
+   transition to the new meaning of YYERROR, for GCC.
+   Once GCC version 2 has supplanted version 1, this can go.  */
+#define YYFAIL		goto yyerrlab
+#define YYRECOVERING()  (!!yyerrstatus)
+#define YYBACKUP(token, value) \
+do								\
+  if (yychar == YYEMPTY && yylen == 1)				\
+    { yychar = (token), yylval = (value);			\
+      yychar1 = YYTRANSLATE (yychar);				\
+      YYPOPSTACK;						\
+      goto yybackup;						\
+    }								\
+  else								\
+    { yyerror ("syntax error: cannot back up"); YYERROR; }	\
+while (0)
 
 #define YYTERROR	1
+#define YYERRCODE	256
 
-#ifndef YYIMPURE
+#ifndef YYPURE
 #define YYLEX		yylex()
 #endif
 
-#ifndef YYPURE
+#ifdef YYPURE
+#ifdef YYLSP_NEEDED
 #define YYLEX		yylex(&yylval, &yylloc)
+#else
+#define YYLEX		yylex(&yylval)
+#endif
 #endif
 
 /* If nonreentrant, generate the variables here */
 
-#ifndef YYIMPURE
+#ifndef YYPURE
 
 int	yychar;			/*  the lookahead symbol		*/
 YYSTYPE	yylval;			/*  the semantic value of the		*/
 				/*  lookahead symbol			*/
 
+#ifdef YYLSP_NEEDED
 YYLTYPE yylloc;			/*  location data for the lookahead	*/
 				/*  symbol				*/
-
-int yynerr;			/*  number of parse errors so far       */
-
-#ifdef YYDEBUG
-int yydebug = 0;		/*  nonzero means print parse trace	*/
 #endif
 
-#endif  /* YYIMPURE */
+int yynerrs;			/*  number of parse errors so far       */
+#endif  /* not YYPURE */
 
-
-/*  YYMAXDEPTH indicates the initial size of the parser's stacks	*/
-
-#ifndef	YYMAXDEPTH
-#define YYMAXDEPTH 200
+#if YYDEBUG != 0
+int yydebug;			/*  nonzero means print parse trace	*/
+/* Since this is uninitialized, it does not stop multiple parsers
+   from coexisting.  */
 #endif
 
-/*  YYMAXLIMIT is the maximum size the stacks can grow to
+/*  YYINITDEPTH indicates the initial size of the parser's stacks	*/
+
+#ifndef	YYINITDEPTH
+#define YYINITDEPTH 200
+#endif
+
+/*  YYMAXDEPTH is the maximum size the stacks can grow to
     (effective only if the built-in stack extension method is used).  */
 
-#ifndef YYMAXLIMIT
-#define YYMAXLIMIT 10000
+#if YYMAXDEPTH == 0
+#undef YYMAXDEPTH
 #endif
 
+#ifndef YYMAXDEPTH
+#define YYMAXDEPTH 10000
+#endif
+
+#if __GNUC__ > 1		/* GNU C and GNU C++ define this.  */
+#define __yy_bcopy(FROM,TO,COUNT)	__builtin_memcpy(TO,FROM,COUNT)
+#else				/* not GNU C or C++ */
+#ifndef __cplusplus
 
-#line 165 "bison.simple"
+/* This is the most reliable way to avoid incompatibilities
+   in available built-in functions on various systems.  */
+static void
+__yy_bcopy (from, to, count)
+     char *from;
+     char *to;
+     int count;
+{
+  register char *f = from;
+  register char *t = to;
+  register int i = count;
+
+  while (i-- > 0)
+    *t++ = *f++;
+}
+
+#else /* __cplusplus */
+
+/* This is the most reliable way to avoid incompatibilities
+   in available built-in functions on various systems.  */
+static void
+__yy_bcopy (char *from, char *to, int count)
+{
+  register char *f = from;
+  register char *t = to;
+  register int i = count;
+
+  while (i-- > 0)
+    *t++ = *f++;
+}
+
+#endif
+#endif
+
+#line 169 "bison.simple"
 int
 yyparse()
 {
@@ -374,30 +394,35 @@ yyparse()
   register int yyn;
   register short *yyssp;
   register YYSTYPE *yyvsp;
-  YYLTYPE *yylsp;
   int yyerrstatus;	/*  number of tokens to shift before error messages enabled */
   int yychar1;		/*  lookahead token as an internal (translated) token number */
 
-  short	yyssa[YYMAXDEPTH];	/*  the state stack			*/
-  YYSTYPE yyvsa[YYMAXDEPTH];	/*  the semantic value stack		*/
-  YYLTYPE yylsa[YYMAXDEPTH];	/*  the location stack			*/
+  short	yyssa[YYINITDEPTH];	/*  the state stack			*/
+  YYSTYPE yyvsa[YYINITDEPTH];	/*  the semantic value stack		*/
 
   short *yyss = yyssa;		/*  refer to the stacks thru separate pointers */
   YYSTYPE *yyvs = yyvsa;	/*  to allow yyoverflow to reallocate them elsewhere */
+
+#ifdef YYLSP_NEEDED
+  YYLTYPE yylsa[YYINITDEPTH];	/*  the location stack			*/
   YYLTYPE *yyls = yylsa;
+  YYLTYPE *yylsp;
 
-  int yymaxdepth = YYMAXDEPTH;
+#define YYPOPSTACK   (yyvsp--, yysp--, yylsp--)
+#else
+#define YYPOPSTACK   (yyvsp--, yysp--)
+#endif
 
-#ifndef YYPURE
+  int yystacksize = YYINITDEPTH;
+
+#ifdef YYPURE
   int yychar;
   YYSTYPE yylval;
+  int yynerrs;
+#ifdef YYLSP_NEEDED
   YYLTYPE yylloc;
 #endif
-
-#ifdef YYDEBUG
-  extern int yydebug;
 #endif
-
 
   YYSTYPE yyval;		/*  the variable used to return		*/
 				/*  semantic values from the action	*/
@@ -405,14 +430,14 @@ yyparse()
 
   int yylen;
 
-#ifdef YYDEBUG
+#if YYDEBUG != 0
   if (yydebug)
     fprintf(stderr, "Starting parse\n");
 #endif
 
   yystate = 0;
   yyerrstatus = 0;
-  yynerr = 0;
+  yynerrs = 0;
   yychar = YYEMPTY;		/* Cause a token to be read.  */
 
   /* Initialize stack pointers.
@@ -421,7 +446,9 @@ yyparse()
 
   yyssp = yyss - 1;
   yyvsp = yyvs;
+#ifdef YYLSP_NEEDED
   yylsp = yyls;
+#endif
 
 /* Push a new state, which is found in  yystate  .  */
 /* In all cases, when you get here, the value and location stacks
@@ -430,13 +457,15 @@ yynewstate:
 
   *++yyssp = yystate;
 
-  if (yyssp >= yyss + yymaxdepth - 1)
+  if (yyssp >= yyss + yystacksize - 1)
     {
       /* Give user a chance to reallocate the stack */
       /* Use copies of these so that the &'s don't force the real ones into memory. */
       YYSTYPE *yyvs1 = yyvs;
-      YYLTYPE *yyls1 = yyls;
       short *yyss1 = yyss;
+#ifdef YYLSP_NEEDED
+      YYLTYPE *yyls1 = yyls;
+#endif
 
       /* Get the current used size of the three stacks, in elements.  */
       int size = yyssp - yyss + 1;
@@ -447,24 +476,32 @@ yynewstate:
       yyoverflow("parser stack overflow",
 		 &yyss1, size * sizeof (*yyssp),
 		 &yyvs1, size * sizeof (*yyvsp),
+#ifdef YYLSP_NEEDED
 		 &yyls1, size * sizeof (*yylsp),
-		 &yymaxdepth);
+#endif
+		 &yystacksize);
 
-      yyss = yyss1; yyvs = yyvs1; yyls = yyls1;
+      yyss = yyss1; yyvs = yyvs1;
+#ifdef YYLSP_NEEDED
+      yyls = yyls1;
+#endif
 #else /* no yyoverflow */
       /* Extend the stack our own way.  */
-      if (yymaxdepth >= YYMAXLIMIT)
-	yyerror("parser stack overflow");
-      yymaxdepth *= 2;
-      if (yymaxdepth > YYMAXLIMIT)
-	yymaxdepth = YYMAXLIMIT;
-      yyss = (short *) alloca (yymaxdepth * sizeof (*yyssp));
-      bcopy ((char *)yyss1, (char *)yyss, size * sizeof (*yyssp));
-      yyvs = (YYSTYPE *) alloca (yymaxdepth * sizeof (*yyvsp));
-      bcopy ((char *)yyvs1, (char *)yyvs, size * sizeof (*yyvsp));
+      if (yystacksize >= YYMAXDEPTH)
+	{
+	  yyerror("parser stack overflow");
+	  return 2;
+	}
+      yystacksize *= 2;
+      if (yystacksize > YYMAXDEPTH)
+	yystacksize = YYMAXDEPTH;
+      yyss = (short *) alloca (yystacksize * sizeof (*yyssp));
+      __yy_bcopy ((char *)yyss1, (char *)yyss, size * sizeof (*yyssp));
+      yyvs = (YYSTYPE *) alloca (yystacksize * sizeof (*yyvsp));
+      __yy_bcopy ((char *)yyvs1, (char *)yyvs, size * sizeof (*yyvsp));
 #ifdef YYLSP_NEEDED
-      yyls = (YYLTYPE *) alloca (yymaxdepth * sizeof (*yylsp));
-      bcopy ((char *)yyls1, (char *)yyls, size * sizeof (*yylsp));
+      yyls = (YYLTYPE *) alloca (yystacksize * sizeof (*yylsp));
+      __yy_bcopy ((char *)yyls1, (char *)yyls, size * sizeof (*yylsp));
 #endif
 #endif /* no yyoverflow */
 
@@ -474,23 +511,25 @@ yynewstate:
       yylsp = yyls + size - 1;
 #endif
 
-#ifdef YYDEBUG
+#if YYDEBUG != 0
       if (yydebug)
-	fprintf(stderr, "Stack size increased to %d\n", yymaxdepth);
+	fprintf(stderr, "Stack size increased to %d\n", yystacksize);
 #endif
 
-      if (yyssp >= yyss + yymaxdepth - 1)
-	YYERROR;
+      if (yyssp >= yyss + yystacksize - 1)
+	YYABORT;
     }
 
-#ifdef YYDEBUG
+#if YYDEBUG != 0
   if (yydebug)
     fprintf(stderr, "Entering state %d\n", yystate);
 #endif
 
+ yybackup:
+
 /* Do appropriate processing given the current state.  */
 /* Read a lookahead token if we need one and don't already have one.  */
-yyresume:
+/* yyresume: */
 
   /* First try to decide what to do without reference to lookahead token.  */
 
@@ -505,7 +544,7 @@ yyresume:
 
   if (yychar == YYEMPTY)
     {
-#ifdef YYDEBUG
+#if YYDEBUG != 0
       if (yydebug)
 	fprintf(stderr, "Reading a token: ");
 #endif
@@ -519,7 +558,7 @@ yyresume:
       yychar1 = 0;
       yychar = YYEOF;		/* Don't call YYLEX any more */
 
-#ifdef YYDEBUG
+#if YYDEBUG != 0
       if (yydebug)
 	fprintf(stderr, "Now at end of input.\n");
 #endif
@@ -528,9 +567,17 @@ yyresume:
     {
       yychar1 = YYTRANSLATE(yychar);
 
-#ifdef YYDEBUG
+#if YYDEBUG != 0
       if (yydebug)
-	fprintf(stderr, "Next token is %d (%s)\n", yychar, yytname[yychar1]);
+	{
+	  fprintf (stderr, "Next token is %d (%s", yychar, yytname[yychar1]);
+	  /* Give the individual parser a way to print the precise meaning
+	     of a token, for further debugging info.  */
+#ifdef YYPRINT
+	  YYPRINT (stderr, yychar, yylval);
+#endif
+	  fprintf (stderr, ")\n");
+	}
 #endif
     }
 
@@ -562,7 +609,7 @@ yyresume:
 
   /* Shift the lookahead token.  */
 
-#ifdef YYDEBUG
+#if YYDEBUG != 0
   if (yydebug)
     fprintf(stderr, "Shifting token %d (%s), ", yychar, yytname[yychar1]);
 #endif
@@ -594,15 +641,18 @@ yyreduce:
   yylen = yyr2[yyn];
   yyval = yyvsp[1-yylen]; /* implement default value of the action */
 
-#ifdef YYDEBUG
+#if YYDEBUG != 0
   if (yydebug)
     {
-      if (yylen == 1)
-	fprintf (stderr, "Reducing 1 value via line %d, ",
-		 yyrline[yyn]);
-      else
-	fprintf (stderr, "Reducing %d values via line %d, ",
-		 yylen, yyrline[yyn]);
+      int i;
+
+      fprintf (stderr, "Reducing via rule %d (line %d), ",
+	       yyn, yyrline[yyn]);
+
+      /* Print the symboles being reduced, and their result.  */
+      for (i = yyprhs[yyn]; yyrhs[i] > 0; i++)
+	fprintf (stderr, "%s ", yytname[yyrhs[i]]);
+      fprintf (stderr, " -> %s\n", yytname[yyr1[yyn]]);
     }
 #endif
 
@@ -723,7 +773,7 @@ case 29:
     break;}
 }
    /* the action file gets copied in in place of this dollarsign */
-#line 303 "bison.simple"
+#line 440 "bison.simple"
 
   yyvsp -= yylen;
   yyssp -= yylen;
@@ -731,11 +781,11 @@ case 29:
   yylsp -= yylen;
 #endif
 
-#ifdef YYDEBUG
+#if YYDEBUG != 0
   if (yydebug)
     {
       short *ssp1 = yyss - 1;
-      fprintf (stderr, "state stack now", yyssp-yyss);
+      fprintf (stderr, "state stack now");
       while (ssp1 != yyssp)
 	fprintf (stderr, " %d", *++ssp1);
       fprintf (stderr, "\n");
@@ -781,9 +831,45 @@ yyerrlab:   /* here on detecting error */
   if (! yyerrstatus)
     /* If not already recovering from an error, report this error.  */
     {
-      ++yynerr;
-      yyerror("parse error");
+      ++yynerrs;
+
+#ifdef YYERROR_VERBOSE
+      yyn = yypact[yystate];
+
+      if (yyn > YYFLAG && yyn < YYLAST)
+	{
+	  int size = 0;
+	  char *msg;
+	  int x, count;
+
+	  count = 0;
+	  for (x = 0; x < (sizeof(yytname) / sizeof(char *)); x++)
+	    if (yycheck[x + yyn] == x)
+	      size += strlen(yytname[x]) + 15, count++;
+	  msg = (char *) xmalloc(size + 15);
+	  strcpy(msg, "parse error");
+
+	  if (count < 5)
+	    {
+	      count = 0;
+	      for (x = 0; x < (sizeof(yytname) / sizeof(char *)); x++)
+		if (yycheck[x + yyn] == x)
+		  {
+		    strcat(msg, count == 0 ? ", expecting `" : " or `");
+		    strcat(msg, yytname[x]);
+		    strcat(msg, "'");
+		    count++;
+		  }
+	    }
+	  yyerror(msg);
+	  free(msg);
+	}
+      else
+#endif /* YYERROR_VERBOSE */
+	yyerror("parse error");
     }
+
+yyerrlab1:   /* here on error raised explicitly by an action */
 
   if (yyerrstatus == 3)
     {
@@ -791,9 +877,9 @@ yyerrlab:   /* here on detecting error */
 
       /* return failure if at end of input */
       if (yychar == YYEOF)
-	YYERROR;
+	YYABORT;
 
-#ifdef YYDEBUG
+#if YYDEBUG != 0
       if (yydebug)
 	fprintf(stderr, "Discarding token %d (%s).\n", yychar, yytname[yychar1]);
 #endif
@@ -819,18 +905,18 @@ yyerrdefault:  /* current state does not do anything special for the error token
 
 yyerrpop:   /* pop the current state because it cannot handle the error token */
 
-  if (yyssp == yyss) YYERROR;
+  if (yyssp == yyss) YYABORT;
   yyvsp--;
   yystate = *--yyssp;
 #ifdef YYLSP_NEEDED
   yylsp--;
 #endif
 
-#ifdef YYDEBUG
+#if YYDEBUG != 0
   if (yydebug)
     {
       short *ssp1 = yyss - 1;
-      fprintf (stderr, "Error: state stack now", yyssp-yyss);
+      fprintf (stderr, "Error: state stack now");
       while (ssp1 != yyssp)
 	fprintf (stderr, " %d", *++ssp1);
       fprintf (stderr, "\n");
@@ -861,7 +947,7 @@ yyerrhandle:
   if (yyn == YYFINAL)
     YYACCEPT;
 
-#ifdef YYDEBUG
+#if YYDEBUG != 0
   if (yydebug)
     fprintf(stderr, "Shifting error token, ");
 #endif

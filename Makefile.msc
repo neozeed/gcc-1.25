@@ -306,7 +306,7 @@ clean:
 	@del $(GCCOBJ)
 	@del xgcc.exe
 	@del $(CPPOBJ)
-	@del cpp.exe
+	@del cpp.exe cexp.c
 	@del $(GNULIB)
 	@del gnulib.lib
 	@del hello.exe hello.o as.exe
